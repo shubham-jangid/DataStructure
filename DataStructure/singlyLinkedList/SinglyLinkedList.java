@@ -10,6 +10,27 @@ public class SinglyLinkedList {
         first=node;
     }
 
+    public void deleteFirst(){
+        first= first.next;
+    }
+
+    public void inserLast(int data){
+
+        Node node = new Node();
+        node.data=data;
+
+        if(first==null){
+            first=node;
+        }else {
+            Node current = first;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = node;
+        }
+
+    }
+
     public void showList(){
         Node current = first;
         while(current!=null){
@@ -18,11 +39,5 @@ public class SinglyLinkedList {
         }
     }
 
-    public static void main(String[] args) {
-        SinglyLinkedList a = new SinglyLinkedList();
-        a.insertFirst(4);
-        a.insertFirst(3);
-        a.insertFirst(2);
-        a.showList();
-    }
+
 }

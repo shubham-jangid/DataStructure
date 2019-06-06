@@ -1,36 +1,68 @@
 package DataStructure.circularLinkedList;
 
+
+
+
 public class CircularLinkedList {
-    Node first , last;
+    Node first, last;
 
-
-
-    public void deleteFirst(){
-        first= first.next;
+    public void deleteFirst() {
+        first = first.next;
     }
 
-    public void insert(int data){
-
+    public void insertFirst(int data) {
         Node node = new Node();
-        node.data=data;
+        node.data = data;
+        if (isEmpty()) {
+            first = node;
+            node.next = first;
+            last = node;
+        } else {
+            node.next = first;
+            first = node;
+            last.next=first;
 
-        if(first==null){
-            first=node;
-            last=node;
-        }else {
+        }
 
-            last.next = node;
+    }
+
+    public void insertLast(int data){
+        Node node = new Node();
+        node.data = data;
+
+        if(isEmpty()) {
+            first = node;
+            last=first;
             node.next=first;
         }
+        else{
+            last.next=node;
+            last=node;
+            node.next=first;
+
+        }
 
     }
 
-    public void showList(){
+
+
+    public boolean isEmpty() {
+        return (first == null);
+    }
+
+    public int showList() {
         Node current = first;
-        while(current!=null){
-            System.out.println(current.data);
-            current=current.next;
+        if (isEmpty()) {
+            System.out.println("list is empty");
+            return 0;
+        } else {
+            do {
+                System.out.println(current.data);
+                current = current.next;
+            } while (current!= first);
+
         }
+        return 0;
     }
 
 
